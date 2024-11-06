@@ -1,12 +1,19 @@
-﻿<script setup lang="ts">
+﻿<script >
 
 import SearchClient from "@/components/DesafioFrontEndComponents/MainScreen/SeacrhClient/SearchClient.vue";
 import CompraContainer from "@/components/DesafioFrontEndComponents/MainScreen/Compra/CompraContainer.vue";
+import axios from "axios";
+export default {
+  components: {CompraContainer, SearchClient},
+
+
+}
 </script>
 
 <template>
   <div class="searchClientContainer">
-    <SearchClient />
+
+    <SearchClient v-model:value="cpf" />
     <CompraContainer />
   </div>
 </template>
