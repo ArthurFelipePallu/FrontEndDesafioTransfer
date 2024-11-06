@@ -24,7 +24,4 @@ export default {
   height: 20px;
   color: var(--color-text-green);
 }
-.ml-10{
-  margin-left: 10px;
-}
 </style>

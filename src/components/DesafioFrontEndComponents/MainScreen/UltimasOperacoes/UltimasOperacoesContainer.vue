@@ -1,15 +1,39 @@
-﻿<script setup lang="ts">
+﻿<script >
 
 import OperacoesInfo from "@/components/DesafioFrontEndComponents/MainScreen/UltimasOperacoes/OperacoesInfo.vue";
+import axios from "axios";
+export default {
+  name: "Operacoes",
+  components: {OperacoesInfo},
+  data() {
+    return {
+      operacoes: [],
+    }
+  },
+  methods:{
+    getTransactions(){
+      axios.get("https://8bf5656a-59c7-481c-b829-805269eb65d9.mock.pstmn.io/finisheTransactions").then( (response) => {
+        console.log( response.data );
+        this.operacoes = response.data;
+      }).catch(error => {
+        console.error(error);
+      })
+    }
+  },
+  beforeMount() {
+    this.getTransactions();
+  }
+}
+
 </script>
 
 <template>
   <div class="ultimasOperacoesContainer">
     <p>Ultimas operações realizadas</p>
-    <OperacoesInfo valor="1.000,00" aprovada="Aprovada"/>
-    <OperacoesInfo valor="5.000,00" aprovada="Pendente"/>
-    <OperacoesInfo valor="7.500,00" aprovada="Pendente"/>
-
+    <div v-for="oper in operacoes" :key="oper.id">
+      <OperacoesInfo :valor="oper.value" :aprovada="oper.aproved" :modo-pagamento="oper.payment" />
+      <hr />
+    </div>
     <p class="aligned-text" >Ver Todas</p>
   </div>
 </template>

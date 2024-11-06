@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="botaoPagamento">
+  <div class="botaoPagamento isContainerFlexAlignedCenter">
     <p class="pagamentoText">Gerar QR  code de pagamento</p>
   </div>
 </template>
@@ -16,8 +16,6 @@
   background-color: var(--color-background-blue);
   border-radius: 10px;
   border-style: none;
-  display: flex;
-  align-items: center;
   justify-content: center;
 }
 .pagamentoText{

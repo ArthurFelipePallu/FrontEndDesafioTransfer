@@ -11,9 +11,9 @@ export default {
 </script>
 
 <template>
-<div class="user">
+<div class="user isContainerFlexAlignedCenter">
 
-  <img src="../../../../assets/DesafioFrontendAssets/Icons/userIcon.png" height="29" width="29" class="ml-20" />
+  <img src="../../../../assets/Icons/userIcon.png" height="29" width="29"/>
   <p class="ml-20">{{ userName }}</p>
 
   <img src="../../../../assets/DesafioFrontendAssets/whiteArrow.png" height="12" width="8" class="rotate90 ml-20"/>
@@ -23,8 +23,6 @@ export default {
 <style scoped>
 .user{
   width: 100px;
-  display: flex;
-  align-items: center;
 }
 .rotate90{
   -webkit-transform: rotate(-90deg);
@@ -32,8 +30,5 @@ export default {
   -o-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-}
-.ml-20{
-  margin-left: 20px;
 }
 </style>

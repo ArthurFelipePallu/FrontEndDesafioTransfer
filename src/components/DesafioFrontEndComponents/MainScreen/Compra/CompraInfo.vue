@@ -15,8 +15,8 @@ export default {
 </script>
 
 <template>
-  <div class="compraInfoContainer">
-    <div class="compraInfo">
+  <div class="compraInfoContainer isContainerFlexBetween">
+    <div class="isContainerFlexBetween ">
       <img src="../../../../assets/Icons/infoIcon.png" height="14" width="16"/>
       <p class="compraInfoText">{{nome}}  </p>
     </div>
@@ -31,14 +31,6 @@ export default {
   width: 100%;
   height: 17px;
   margin-top: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.compraInfo{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .compraInfoText{
   font-size: 14px;

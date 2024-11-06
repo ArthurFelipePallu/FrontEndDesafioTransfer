@@ -4,7 +4,7 @@ import ClienInfo from "@/components/DesafioFrontEndComponents/MainScreen/SeacrhC
 </script>
 
 <template>
-<div class="clientInfoContainer">
+<div class="clientInfoContainer isContainerFlexAlignedCenter">
   <ClienInfo info-name="Nome do cliente" info="Arthur Pallu" class="ml-20"/>
 
   <ClienInfo info-name="CPF" info="000.000.000-00" />
@@ -21,10 +21,5 @@ import ClienInfo from "@/components/DesafioFrontEndComponents/MainScreen/SeacrhC
   background-color: var(--color-background-white);
   border-radius: 10px;
   border-style: none;
-  display: flex;
-  align-items: center;
-}
-.ml-20{
-  margin-left: 20px;
 }
 </style>

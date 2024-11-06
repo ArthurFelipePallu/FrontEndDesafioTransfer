@@ -5,7 +5,7 @@ import HeaderUser from "@/components/DesafioFrontEndComponents/MainScreen/Header
 </script>
 
 <template>
-  <div class="userSectionContainer">
+  <div class="userSectionContainer isContainerFlexAlignedCenter">
     <HeaderNotification number-of-notifications="14" />
     <HeaderUser user-name="Allan"/>
 
@@ -16,8 +16,6 @@ import HeaderUser from "@/components/DesafioFrontEndComponents/MainScreen/Header
 .userSectionContainer{
   width: 200px;
   height: 30px;
-  display: flex;
-  align-items: center;
   align-content: space-around;
 }
 </style>

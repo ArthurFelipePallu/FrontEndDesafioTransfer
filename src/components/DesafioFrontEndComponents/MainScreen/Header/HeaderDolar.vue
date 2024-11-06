@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="dollar">
+  <div class="dollar isContainerFlexAlignedCenter">
     <img src="../../../../assets/Icons/FlagUSA.png" height="36" width="60"/>
     <div class="dollarInfo">
       <p>{{ dollarValue }} BRL</p>
@@ -33,8 +33,6 @@ export default {
   margin-left: 20px;
   width: 191px;
   height: 38px;
-  display: flex;
-  align-items: center;
 
 }
 .dollarInfo{

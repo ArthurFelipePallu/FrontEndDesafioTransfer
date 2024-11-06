@@ -8,7 +8,7 @@ import DetalhesPagamento from "@/components/DesafioFrontEndComponents/MainScreen
 <template>
   <div class="compraContainer">
     <ValorDaCompra  compra-valor="200,00"/>
-    <div class="containerFlex">
+    <div class="container isFlex">
       <DetalhesOperacao />
       <DetalhesPagamento />
     </div>
@@ -22,8 +22,7 @@ import DetalhesPagamento from "@/components/DesafioFrontEndComponents/MainScreen
   margin-top: 30px;
   margin-left: 20px;
 }
-.containerFlex{
-  display: flex;
+.container{
   justify-content: space-between;
 }
 </style>

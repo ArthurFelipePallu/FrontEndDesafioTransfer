@@ -5,7 +5,7 @@ import HeaderUserSection from "@/components/DesafioFrontEndComponents/MainScreen
 </script>
 
 <template>
-<div class="headerContainer">
+<div class="headerContainer isContainerFlexBetween">
   <HeaderDolar dollar-value="5,3034"/>
   <HeaderUserSection />
 </div>
@@ -16,9 +16,6 @@ import HeaderUserSection from "@/components/DesafioFrontEndComponents/MainScreen
 .headerContainer{
   width: 1150px;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   color: var(--color-text-white);
   background-color: var(--color-background-black);
   border-radius: 15px;

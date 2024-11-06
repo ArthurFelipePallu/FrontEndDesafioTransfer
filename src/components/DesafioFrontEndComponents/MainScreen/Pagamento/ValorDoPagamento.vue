@@ -13,9 +13,9 @@ export default {
 <template>
 
   <div>
-    <div class="valorPagamento">
+    <div class="valorPagamento isContainerFlexBetween">
       <img src="../../../../assets/Icons/FlagBR.png" height="39" width="56"/>
-      <div class="valorTextHolder">
+      <div class="valorTextHolder isContainerFlexAlignedCenter">
         <p class="valorText">$ {{ pagamentoValor }}</p>
       </div>
     </div>
@@ -24,11 +24,7 @@ export default {
 
 <style scoped>
 
-.compraText{
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-black);
-}
+
 .valorPagamento{
   padding: 20px;
   width: 100%;
@@ -36,15 +32,10 @@ export default {
   background-color: var(--color-background-white);
   border-radius: 10px;
   border-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .valorTextHolder {
   width: 164px;
   height: 17px;
-  display: flex;
-  align-items: center;
   justify-content: right;
 }
 .valorText{

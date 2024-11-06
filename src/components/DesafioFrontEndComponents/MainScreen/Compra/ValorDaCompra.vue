@@ -17,7 +17,7 @@ export default {
   <div>
 
     <p class="compraText">Valor da compra</p>
-    <div class="valorCompra">
+    <div class="valorCompra isContainerFlexBetween">
       <img src="../../../../assets/Icons/FlagUSA.png" height="36" width="60"/>
       <div class="valorTextHolder">
         <p class="valorText">$ 200,00</p>
@@ -40,9 +40,6 @@ export default {
   background-color: var(--color-background-white);
   border-radius: 10px;
   border-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .valorTextHolder {
   width: 164px;

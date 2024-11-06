@@ -6,23 +6,30 @@ export default {
   components: {UltimaOperaçoesDolar},
   props: {
     valor: {
-      type: String,
+      type: Number,
       required: true
     },
-  aprovada: {
-    type:String,
-    required: true
-  }
+    aprovada: {
+      type:Boolean,
+      required: true
+    },
+    modoPagamento: {
+      type:String,
+      required: true
+    }
   }
 
 };
 </script>
 <template>
-  <div class="operacoesInfo">
-    <UltimaOperaçoesDolar dollar-value="1.000,00" modo-pagamento="Transferência PIX"/>
+  <div class="operacoesInfo isContainerFlexAround">
+    <UltimaOperaçoesDolar :dollar-value="valor" :modo-pagamento="modoPagamento" />
 
     <img src="../../../../assets/DesafioFrontendAssets/Recebimento.png" height="15" width="92"/>
-    <p class="aprovadaText">{{ aprovada }}</p>
+
+    <p v-if="aprovada" class="aprovadaText">Aprovada</p>
+    <p v-else class="aprovadaText">Pendente</p>
+
   </div>
 </template>
 
@@ -33,10 +40,6 @@ export default {
   margin-top: 10px;
   margin-bottom: 20px;
   border-top: var(--color-borded-lightgrey) 1px solid;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
 }
 
 .aprovadaText{

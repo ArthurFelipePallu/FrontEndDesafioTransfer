@@ -1,37 +1,43 @@
 ﻿<template>
-  <div>
-    <!-- Use require to resolve the image path dynamically -->
-    <img :src="getImagePath(data.imageName)" alt="Dynamic Icon" />
+  <div v-if="name === 'IconExtrato'" >
+    <img src="../assets/Icons/IconExtrato.png" class="icon"  alt=""/>
   </div>
+  <div v-else-if=" name === 'IconQRcode'" >
+    <img src="../assets/Icons/IconQRcode.png" class="icon" alt=""/>
+  </div>
+  <div v-else-if=" name === 'IconSaque'"  >
+    <img src="../assets/Icons/IconSaque.png" class="icon" alt=""/>
+  </div>
+  <div v-else-if=" name === 'IconClientes'" >
+    <img src="../assets/Icons/IconClientes.png" class="icon" alt=""/>
+  </div>
+  <div v-else-if=" name === 'IconAcessos'"  >
+    <img src="../assets/Icons/IconAcessos.png" class="icon" alt=""/>
+  </div>
+  <div v-else-if=" name === 'IconContas'" >
+  <img src="../assets/Icons/IconContas.png" class="icon" alt=""/>
+</div>
 </template>
 
 <script>
 export default {
   name: "ImageComponent",
   props: {
-    data: {
-      type: Object,
+    name: {
+      type: String,
       required: true
+    },
+    selected:{
+      type: String,
+      default: false
     }
   },
-  methods: {
-    getImagePath(imageName) {
-      try {
-        // Dynamically require the image from the Icons folder
-        return require(`../assets/Icons/${imageName}`);
-      } catch (error) {
-        // Handle cases where the image does not exist
-        console.warn(`Image not found: ${imageName}`);
-        return ""; // Or return a placeholder image path
-      }
-    }
-  }
 };
 </script>
 
 <style scoped>
-img {
-  width: 100px; /* Example width */
-  height: auto;
+.icon{
+  height: 24px;
+  width: 24px;
 }
 </style>

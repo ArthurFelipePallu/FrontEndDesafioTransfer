@@ -8,12 +8,12 @@ import SideNavButton from "@/components/DesafioFrontEndComponents/SideNav/SideNa
   <div class="desafioLeftNav">
     <TransferBanKLogo/>
     <div class="navButtonsContainer margintop60">
-      <SideNavButton btn-text="Gerar QR Code" status="botaoverde"/>
-      <SideNavButton btn-text="Extrato" status="normal"  />
-      <SideNavButton btn-text="Saque" status="normal" />
-      <SideNavButton btn-text="Clientes" status="normal"  />
-      <SideNavButton btn-text="Acessos" status="normal"  />
-      <SideNavButton btn-text="Contas" status="normal"/>
+      <SideNavButton iconName="IconQRcode" btn-text="Gerar QR Code" status="isSelected" />
+      <SideNavButton iconName="IconExtrato" btn-text="Extrato" status="normal"  />
+      <SideNavButton iconName="IconSaque" btn-text="Saque" status="normal" />
+      <SideNavButton iconName="IconClientes" btn-text="Clientes" status="normal"  />
+      <SideNavButton iconName="IconAcessos" btn-text="Acessos" status="normal"  />
+      <SideNavButton iconName="IconContas" btn-text="Contas" status="normal"/>
 
     </div>
 
