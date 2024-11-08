@@ -1,14 +1,25 @@
 ﻿<script>
+
+import { OperationDetails }  from "@/stores/counter"
+
 export default {
-  props: {
-    pagamentoValor: {
-      type: String,
-      required: true
-    },
+  components: {
+    OperationDetails
+  },
+  data() {
+    return {
+      operationDetails: null,
+    }
+  },
+  beforeMount() {
+    this.operationDetails = OperationDetails();
+  },
+  methods: {
   },
 
 };
 </script>
+
 
 <template>
 
@@ -16,7 +27,7 @@ export default {
     <div class="valorPagamento isContainerFlexBetween">
       <img src="../../../../assets/Icons/FlagBR.png" height="39" width="56"/>
       <div class="valorTextHolder isContainerFlexAlignedCenter">
-        <p class="valorText">$ {{ pagamentoValor }}</p>
+        <p class="valorText">R$: {{this.operationDetails.getTotalAPagar}}</p>
       </div>
     </div>
   </div>

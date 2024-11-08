@@ -16,6 +16,44 @@ export default {
   },
   data(){
     return {
+      postmanUsersList:[
+        {
+          "id" : 1,
+          "name" : "Allan",
+          "cpf" : 99999999999,
+          "number" : "(11) 9 1111-1111"
+        },
+        {
+          "id" : 2,
+          "name" : "Adrian",
+          "cpf" : 11111111111,
+          "number" : "(22) 9 2222-2222"
+        },
+        {
+          "id" : 3,
+          "name" : "Arthur",
+          "cpf" : 22222222222,
+          "number" : "(33) 9 3333-3333"
+        },
+        {
+          "id" : 4,
+          "name" : "Alexa",
+          "cpf" : 33333333333,
+          "number" : "(11) 9 1111-1111"
+        },
+        {
+          "id" : 5,
+          "name" : "Allia",
+          "cpf" : 44444444444,
+          "number" : "(22) 9 2222-2222"
+        },
+        {
+          "id" : 6,
+          "name" : "Allastor",
+          "cpf" : 55555555555,
+          "number" : "(33) 9 3333-3333"
+        }
+      ],
       cpfToSearch: '',
       userName:'' ,
       userCPF:'',
@@ -26,11 +64,15 @@ export default {
   },
   beforeMount() {
     this.usersList = UserList();
-    this.GetClientList();
+    this.GetHardCodeUsersList();
+    //this.GetClientList();
     this.modalState = ModalState();
   },
   methods: {
+    GetHardCodeUsersList(){
+      this.usersList.setUsersList(this.postmanUsersList);
 
+    },
     GetClientList(){
       axios.get(  this.base_url + "/users").then( (response) => {
         this.usersList.setUsersList(response.data.users);

@@ -7,7 +7,7 @@ import DetalhesPagamento from "@/components/DesafioFrontEndComponents/MainScreen
 
 <template>
   <div class="compraContainer">
-    <ValorDaCompra  compra-valor="200,00"/>
+    <ValorDaCompra  />
     <div class="container isFlex">
       <DetalhesOperacao />
       <DetalhesPagamento />

@@ -6,7 +6,7 @@ import BotaoPagamento from "@/components/DesafioFrontEndComponents/MainScreen/Pa
 <template>
   <div class="pagamentoContainer">
     <p>Cliente Pagará</p>
-    <ValorDoPagamento pagamentoValor="1200,00" />
+    <ValorDoPagamento />
     <BotaoPagamento />
   </div>
 </template>

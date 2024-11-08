@@ -1,13 +1,27 @@
 ﻿<script>
+
+import { OperationDetails }  from "@/stores/counter"
+
 export default {
-  props: {
-    CompraValor: {
-      type: String,
-      required: true
+  components: {
+      OperationDetails
+  },
+  data() {
+    return {
+      valueOfPurchase: '',
+      operationDetails: null,
+    }
+  },
+  beforeMount() {
+    this.operationDetails = OperationDetails();
+  },
+  methods: {
+    ready: function () {
+        this.operationDetails.setValorDaCompra(Number(this.valueOfPurchase));
     },
   },
 
-};
+  };
 </script>
 
 
@@ -20,7 +34,13 @@ export default {
     <div class="valorCompra isContainerFlexBetween">
       <img src="../../../../assets/Icons/FlagUSA.png" height="36" width="60"/>
       <div class="valorTextHolder">
-        <p class="valorText">$ 200,00</p>
+        <p class="valorText">$</p>
+        <input
+          type="text"
+          v-model="valueOfPurchase"
+          placeholder="0,00"
+          class="ml-10 section-readonly-input valorText"
+          @input="ready">
       </div>
     </div>
   </div>
@@ -52,5 +72,14 @@ export default {
   color: var(--color-text-black);
   font-size: 20px;
   font-weight: 700;
+}
+.section-readonly-input {
+  width: 60px;
+  text-align: center;
+  background: none;
+  border: none;
+  &:focus-visible{
+    outline: none;
+  }
 }
 </style>

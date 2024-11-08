@@ -2,26 +2,60 @@
 
 import OperacoesInfo from "@/components/DesafioFrontEndComponents/MainScreen/UltimasOperacoes/OperacoesInfo.vue";
 import axios from "axios";
+import { LastUserTransactions }  from "@/stores/counter"
+
 export default {
   name: "Operacoes",
-  components: {OperacoesInfo},
+  components: {
+    OperacoesInfo,
+    LastUserTransactions
+  },
   data() {
     return {
-      operacoes: [],
+      operacoes: [
+        {
+          "id" : 1,
+          "value" : 1050.00,
+          "aproved" : true,
+          "payment" : "credit"
+        },
+        {
+
+          "id" : 2,
+          "value" : 2640.00,
+          "aproved" : false,
+          "payment" : "Pix"
+        },
+        {
+
+          "id" : 3,
+          "value" : 15.00,
+          "aproved" : true,
+          "payment" : "talao Cheque"
+        }
+      ],
+      lastUserTransactions: null,
     }
   },
   methods:{
     getTransactions(){
-      axios.get(this.base_url + "/finisheTransactions").then( (response) => {
+      axios.get(this.base_url + "/finishedTransactions").then( (response) => {
         console.log( response.data );
         this.operacoes = response.data;
+        console.log("[ULTIMASOPERACOES] Operacoes:" + this.operacoes)
+
+        this.lastUserTransactions.setTransactionsList(this.operacoes);
+
       }).catch(error => {
         console.error(error);
       })
-    }
+    },
   },
   beforeMount() {
-    this.getTransactions();
+    //this.getTransactions();
+    this.lastUserTransactions = LastUserTransactions();
+    this.lastUserTransactions.setTransactionsList(this.operacoes);
+
   }
 }
 
@@ -30,7 +64,7 @@ export default {
 <template>
   <div class="ultimasOperacoesContainer">
     <p>Ultimas operações realizadas</p>
-    <div v-for="oper in operacoes" :key="oper.id">
+    <div v-for="oper in lastUserTransactions.getTransactionsList" :key="oper.id">
       <OperacoesInfo :valor="oper.value" :aprovada="oper.aproved" :modo-pagamento="oper.payment" />
       <hr />
     </div>
