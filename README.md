@@ -1,64 +1,25 @@
 # desafiofrontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Este é um projeto de desenvolvimento de front-end como teste de contratação
 
-## Recommended IDE Setup
+O projeto encompassa uma única página de um site de banco com funcionalidades de:
+* busca de usuários via chave especifica e tratar o resultado desta busca
+* Calculo do total a ser pago pelo usuario  determinado algumas variáveis
+* Adicionar ultima transação feita pelo usuário a uma lista no backend , juntamente com animações decomponentes da página
+* Tornar a tela responsiva
+    
+  Tudo isso seguindo o design disponibilizado no figma a seguir :
+  https://www.figma.com/proto/Uo1reBcBXBVniP7zGlTv02/Design-System?page-id=0%3A1&node-id=1720-2921&node-type=frame&viewport=-2454%2C-9780%2C0.22&t=nrEX4unWUO6U0zDy-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1696%3A675
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+  Comecei o projeto de maneira simples , me adequando ao estilo de programação do VUEjs e aprendendo suas peculiaridades através de tutoriais , A.I. e maior parte tentativa e erro.
+  me acostumando com o básico e desenhando a página como de acordo com o design.
+      Após essa parte terminada , a primeira fase de refatoração e limpeza do código começou . Embora não tão detalhada como desejaria , esta seria a parte onde uma dinamicidade maior entrou no projeto,
+  buscando dinâmicamente valores e paths de componentes / CSSstyles e assets.
+      A próxima etapa do projeto seguiu com a integração da busca de dados no MockServer do Postman. Uma lista de usuário e outra de Transações fora aplicado e seus valores Retraídos para o site e utilizados em conjunto com o resto dos componentes.
+      Mas foi a chegada do Pinia que iniciou um efeito dominó e disponibilizou uma vasta gama de funcionalidade para o projeto. De Inicio possibilitou a ativação de itens como o Modal a partir de componentes distantes. tarefa que não havia conseguido reproduzir anteriormente.
+      A chegada do Pinia também centralizou boa parte dos dados do projeto em um só lugar, com stores criadas para guardar informações dos itens principais  como lista de Usuários, Lista de Transações ,Operações bancárias e por fim o Modal em si.
+  Com  essas mesas de dados a meu dispor , utilizar suas informações ao redor do projeto possibiltou realizar as funcionalidades necessárias.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+  O projeto deu uma sofrida no momento em que atingi minha quota mensal de requests do Postman.
+  para circunvir rapidamente esse problema  , desabilitei as chamadas de funções que faziam as requests através do axios e setei valores manualmente.
