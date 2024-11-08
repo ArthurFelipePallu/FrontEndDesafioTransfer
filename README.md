@@ -19,8 +19,8 @@ O projeto encompassa uma única página de um site de banco com funcionalidades 
       A próxima etapa do projeto seguiu com a integração da busca de dados no MockServer do Postman. Uma lista de usuário e outra de Transações fora aplicado e seus valores Retraídos para o site e utilizados em conjunto com o resto dos componentes.
       Mas foi a chegada do Pinia que iniciou um efeito dominó e disponibilizou uma vasta gama de funcionalidade para o projeto. De Inicio possibilitou a ativação de itens como o Modal a partir de componentes distantes. tarefa que não havia conseguido reproduzir anteriormente.
 
-
-      A chegada do Pinia também centralizou boa parte dos dados do projeto em um só lugar, com stores criadas para guardar informações dos itens principais  como lista de Usuários, Lista de Transações ,Operações bancárias e por fim o Modal em si.
+A chegada do Pinia também centralizou boa parte dos dados do projeto em um só lugar, com stores criadas para guardar informações dos itens principais  como lista de Usuários, Lista de Transações ,Operações bancárias e por fim o Modal em si.
+      
   Com  essas mesas de dados a meu dispor , utilizar suas informações ao redor do projeto possibiltou realizar as funcionalidades necessárias.
 
   O projeto deu uma sofrida no momento em que atingi minha quota mensal de requests do Postman.
