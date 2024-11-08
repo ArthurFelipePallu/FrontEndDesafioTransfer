@@ -3,6 +3,7 @@ import { ModalState }  from "@/stores/counter"
 import { UserList }  from "@/stores/counter"
 import { OperationDetails }  from "@/stores/counter"
 import { LastUserTransactions }  from "@/stores/counter"
+import { QRCodeInteractions }  from "@/stores/counter"
 
 import axios from "axios";
 
@@ -11,7 +12,8 @@ export default {
     ModalState,
     UserList,
     OperationDetails,
-    LastUserTransactions
+    LastUserTransactions,
+    QRCodeInteractions
   },
   data(){
     return {
@@ -19,6 +21,7 @@ export default {
       userList: null,
       operationDetails: null,
       lastUserTransactions: null,
+      qrCodeInteractions: null,
     }
   },
   beforeMount() {
@@ -26,12 +29,15 @@ export default {
     this.userList = UserList();
     this.operationDetails = OperationDetails();
     this.lastUserTransactions = LastUserTransactions();
+    this.qrCodeInteractions = QRCodeInteractions();
   },
   methods: {
 
 
 
    showPaymentInModal(){
+     if(!this.qrCodeInteractions.getStartedQRCode)
+       return;
      console.log("[QRCODE] ENTROU NA FUNÇÃO");
      let message ="";
      let user = this.userList.getUserFound;
@@ -64,6 +70,14 @@ export default {
         payment: "PIX",
         aproved: true
       };
+    },
+    StartScaling(){
+     if(this.qrCodeInteractions.getStartedQRCode)
+     {
+
+     }
+       return;
+
     }
 
 
@@ -73,9 +87,20 @@ export default {
 <template>
   <div class="qrCodeContainer">
     <button @click="showPaymentInModal">
-      <img src="../../../../assets/DesafioFrontendAssets/qrcode.png" height="360" width="360"/>
+      <div v-if="this.qrCodeInteractions.getStartedQRCode">
+        <img src="../../../../assets/DesafioFrontendAssets/QR_code_clean.png" height="360" width="360"/>
+      </div>
+      <div v-else>
+        <img  src="../../../../assets/DesafioFrontendAssets/qrcode.png" height="360" width="360"/>
+      </div>
     </button>
   </div>
+  <div >
+    <div class="qrCodeContainer  greenBar" :class="{TimeIt : qrCodeInteractions.getStartedQRCode}" >
+
+    </div>
+  </div>
+
 </template>
 
 <style scoped>
@@ -83,4 +108,20 @@ export default {
   width: 100%;
   margin: 20px;
 }
+
+.greenBar{
+  width: 95%;
+  height: 30px;
+  transform: scaleX(1);
+  background-color: rgba(0,0,0,0);
+}
+.TimeIt{
+  background-color: #0BDD78;
+  transition-property: transform;
+  transition-duration: 3s;
+  transition-delay: 0.0s;
+  transition-timing-function: ease-out;
+  transform: scaleX(0);
+}
+
 </style>

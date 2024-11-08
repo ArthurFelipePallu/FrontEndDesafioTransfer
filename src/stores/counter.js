@@ -129,3 +129,38 @@ export const LastUserTransactions = defineStore("lastUserTransactionsCounter",{
 
 });
 
+export const QRCodeInteractions = defineStore("QRCodeInteractionsCounter",{
+
+  state:() =>{
+    return {
+      started: false,
+      stopped: false,
+      timeInMiliSeconds: 3000,
+
+    }
+  },
+  actions:{
+    startQRCodeTimer(){
+      this.started = true;
+      this.stopped = false;
+    },
+    stopQRCodeTimer(){
+      if(this.started){
+        this.stopped = true;
+        this.started = false;
+      }
+    },
+    reset(){
+      this.started = false;
+      this.stopped = false;
+    }
+
+
+  },
+  getters : {
+    getStartedQRCode: (state) => state.started,
+    getStoppedQRCode: (state) => state.stopped,
+    getTimeInMiliSeconds :(state) => state.timeInMiliSeconds ,
+  }
+
+});
