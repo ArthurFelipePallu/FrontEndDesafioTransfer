@@ -12,7 +12,7 @@ export default {
   },
   methods:{
     getTransactions(){
-      axios.get("https://8bf5656a-59c7-481c-b829-805269eb65d9.mock.pstmn.io/finisheTransactions").then( (response) => {
+      axios.get(this.base_url + "/finisheTransactions").then( (response) => {
         console.log( response.data );
         this.operacoes = response.data;
       }).catch(error => {

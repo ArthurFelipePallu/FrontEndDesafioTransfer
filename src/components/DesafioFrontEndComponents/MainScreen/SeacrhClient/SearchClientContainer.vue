@@ -6,6 +6,8 @@ import axios from "axios";
 export default {
   components: {CompraContainer, SearchClient},
 
+  methods:{
+  }
 
 }
 </script>

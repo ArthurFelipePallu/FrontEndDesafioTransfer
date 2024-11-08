@@ -3,91 +3,79 @@
 import ClientInfoHolder from "@/components/DesafioFrontEndComponents/MainScreen/SeacrhClient/ClientInfoHolder.vue";
 import PostList from "@/components/HTTP TESTS/PostList.vue";
 import axios from "axios";
+import {ModalState} from "@/stores/counter"
+
+import {UserList} from "@/stores/counter"
+
 export default {
   components: {
     ClientInfoHolder,
     PostList,
-
+    ModalState,
+    UserList,
   },
   data(){
     return {
-      keyWord:'',
       cpfToSearch: '',
       userName:'' ,
       userCPF:'',
       userNumber:'',
-      foundUser: null,
-      usersList:null
+      usersList:null,
+      modalState: null,
     }
-  },
-  props:{
-    value:{
-      type: String,
-      default: "",
-    }
-  },
-  watch:{
-    value(value){
-      this.keyWord = value;
-    }
-  },
-  created() {
-    this.keyWord = this.value;
   },
   beforeMount() {
+    this.usersList = UserList();
     this.GetClientList();
+    this.modalState = ModalState();
   },
   methods: {
-    onInput(vl){
-        this.$emit('input',vl);
-    },
 
     GetClientList(){
-      axios.get("https://8bf5656a-59c7-481c-b829-805269eb65d9.mock.pstmn.io/users").then( (response) => {
-        console.log( "the users list was retrieved successfully before mounted" );
-        this.usersList = response.data.users;
-        this.SetUserVariables(5);
-
+      axios.get(  this.base_url + "/users").then( (response) => {
+        this.usersList.setUsersList(response.data.users);
       }).catch(error => {
         console.error(error);
       })
     },
-    SetUserVariables(Id){
-      let tempUserList = this.usersList;
-      let user = tempUserList.find( (u) => {
-        return (u.id === Id)
-      });
-      this.userName = user.name;
-      this.userCPF = user.cpf;
-      this.userNumber = user.number;
-    }
+    ready: function () {
+      if (this.cpfToSearch.length !== 11)
+        return;
+
+      let user = this.usersList.getUserByCPF(Number(this.cpfToSearch));
+
+
+      if (user != null) {
+        this.usersList.setUserFound(user);
+        this.userName = user.name;
+        this.userCPF = user.cpf;
+        this.userNumber = user.number;
+        return;
+      }
+      this.modalState.openModal();
+      this.modalState.setMessage("Usuário com CPF: " + this.cpfToSearch + " não pôde ser encontrado");
+    },
   },
-  computed: {
-
-  }
-
 }
 </script>
 
 <template>
 
-  <div>
-    {{usersList}}
-  </div>
   <div class="ml-20 searchClient">
-    <h3>{{ keyWord }}</h3>
+
     <div class="searchBar isContainerFlexAlignedCenter">
 
       <img
         src="../../../../assets/Icons/IconSearch.png"
         class="ml-10 Icon" alt=""/>
 
+
       <input
         type="text"
-        :value="keyWord"
-        @input="onInput($event.target.value)"
+        v-model="cpfToSearch"
         placeholder="CPF do cliente"
-        class="ml-10 section-readonly-input">
+        class="ml-10 section-readonly-input"
+        @input="ready">
 
 
     </div>
@@ -104,6 +92,7 @@ export default {
 
 .searchClient{
   width: 98%;
+  margin-top: 20px;
 }
 h3{
   font-size: 21px;
@@ -133,7 +122,4 @@ input{
   height: 15px;
 }
 
-.black{
-  background-color: var(--color-background-black);
-}
 </style>
